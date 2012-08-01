@@ -1,0 +1,9 @@
+{application,theNetwork,
+             [{description,[]},
+              {vsn,"1"},
+              {registered,[]},
+              {applications,[kernel,stdlib]},
+              {mod,{theNetwork_app,[]}},
+              {env,[]},
+              {modules,[flight_fsm,flight_supervisor,network_events_manager,
+                        theNetwork_app,theNetwork_sup]}]}.
