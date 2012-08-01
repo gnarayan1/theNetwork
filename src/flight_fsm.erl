@@ -13,7 +13,7 @@
 
 %% --------------------------------------------------------------------
 %% External exports
--export([]).
+-export([start/3]).
 
 
 %% gen_fsm callbacks
@@ -30,6 +30,10 @@
 %% ====================================================================
 %% External functions
 %% ====================================================================
+
+start(Sup, Id, Time_Out) ->
+	 supervisor:start_child (Sup, [Id, Time_Out]).
+
 start_link( ID, Time_Out ) ->
     gen_fsm:start_link({local, ID}, ?MODULE, [ID, Time_Out], []).
 
@@ -62,8 +66,9 @@ update_seat(FSM_ID, Seat, Pax) ->
 %%          {stop, StopReason}
 %% --------------------------------------------------------------------
 init([ID, Time_Out]) ->
-	[Flt_Num, Flt_Date, Flt_Origin, Flt_Time] = string:tokens(atom_to_list(ID), "_"),
-    {ok, flight_initiated, #state{id=ID, timeout=Time_Out, flt_num=Flt_Num, dep_date=Flt_Date, origin=Flt_Origin, time=Flt_Time}, Time_Out }.
+	% Time_Out = 60*60*100,
+	% [Flt_Num, Flt_Date, Flt_Origin, Flt_Time] = string:tokens(atom_to_list(ID), "_"),
+    {ok, flight_initiated, #state{id=ID, timeout=Time_Out}, Time_Out }.
 
 %% --------------------------------------------------------------------
 %% Func: StateName/2
