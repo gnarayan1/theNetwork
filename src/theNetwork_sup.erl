@@ -36,5 +36,6 @@ init(_Args) ->
 	io:format("Sup init callback~n"),
 	TheNetworkChildApp = ?CHILD('theNetwork_app', worker),
 	FlightSup = ?CHILD('flight_supervisor', supervisor),
-    {ok, { {one_for_one, 5, 10}, [TheNetworkChildApp, FlightSup]} }.
+	PNRSup = ?CHILD('pnr_supervisor', supervisor),
+    {ok, { {one_for_one, 5, 10}, [TheNetworkChildApp, FlightSup, PNRSup]} }.
 

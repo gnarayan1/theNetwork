@@ -6,4 +6,5 @@
               {mod,{theNetwork_app,[]}},
               {env,[]},
               {modules,[flight_fsm,flight_supervisor,network_events_manager,
-                        theNetwork_app,theNetwork_sup]}]}.
+                        pnr_server,pnr_supervisor,test,theNetwork_app,
+                        theNetwork_sup]}]}.
